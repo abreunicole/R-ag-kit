@@ -11,14 +11,14 @@ ag_clean_datasus <- function(dados) {
   
   dados_limpos <- dados %>%
     # 1. Padronização de CIDs (Remove pontos, espaços e converte para maiúsculas)
-    mutate(
+    dplyr::mutate(
       across(contains("CAUSABAS") | contains("DIAG_PRINC"), 
              ~ str_replace_all(str_to_upper(as.character(.)), "[^A-Z0-9]", ""),
              .names = "{.col}_clean")
     ) %>%
     
     # 2. Higienização de CBOs (Ocupações - Mantém apenas dígitos)
-    mutate(
+    dplyr::mutate(
       across(contains("OCUP") | contains("CBOR"),
              ~ {
                x <- str_replace_all(as.character(.), "[^0-9]", "")
@@ -28,7 +28,7 @@ ag_clean_datasus <- function(dados) {
     ) %>%
     
     # 3. Decodificação de Idade do SIM (Unidade no 1º dígito: 4 = Anos, 5 = Centenários)
-    mutate(
+    dplyr::mutate(
       idade_anos = if ("IDADE" %in% names(.)) {
         sapply(as.character(IDADE), function(x) {
           x_pad <- str_pad(x, width = 3, side = "left", pad = "0")
@@ -45,7 +45,7 @@ ag_clean_datasus <- function(dados) {
     ) %>%
     
     # 4. Agrupamento por Faixas Etárias Padrão Epidemiológicas
-    mutate(
+    dplyr::mutate(
       faixa_etaria = cut(
         idade_anos,
         breaks = c(0, 20, 40, 60, 80, Inf),

@@ -16,7 +16,7 @@ ag_stats_interpret <- function(dados_resumo, provider = "gemini") {
   
   # 2. Inicializar o Chat via ellmer
   if (provider == "gemini") {
-    chat <- chat_gemini(system_prompt = system_prompt)
+    chat <- chat_google_gemini(system_prompt = system_prompt)
   } else {
     chat <- chat_openai(system_prompt = system_prompt)
   }
