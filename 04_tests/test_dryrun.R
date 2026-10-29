@@ -1,4 +1,5 @@
-source("R/ag_fetch.R")
+# CARREGAMENTO DOS MÓDULOS DOS AGENTES
+devtools::load_all()
 
 # Download de teste de carga levíssimo
 teste_fetch <- ag_fetch_datasus(

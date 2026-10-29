@@ -12,11 +12,7 @@ library(rmarkdown)
 library(ellmer)
 
 # 2. CARREGAMENTO DOS MÓDULOS DOS AGENTES
-# Adapte os caminhos caso seus arquivos estejam dentro de pastas específicas (ex: "R/" ou subpastas numeradas)
-source("02_ag_fetch.R/ag_fetch.R", error_arg = NULL) # Ou source("R/ag_fetch.R")
-source("03_ag_clean.R/ag_clean.R", error_arg = NULL) # Ou source("R/ag_clean.R")
-source("04_ag_stats.R/ag_stats.R", error_arg = NULL) # Ou source("R/ag_stats.R")
-source("R/ag_report.R", error_arg = NULL)             # Agente de geração de relatório
+devtools::load_all()
 
 message("\n==================================================")
 message(">>> [R-AG-KIT]: INICIANDO EXECUÇÃO DO PIPELINE <<<")
