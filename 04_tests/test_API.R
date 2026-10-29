@@ -2,14 +2,13 @@
 # TESTE DE CONEXÃO COM A API DO GEMINI VIA ELLMER
 # ==============================================================================
 
-# 1. Carrega o pacote na memória
 library(ellmer)
 
 message(">>> [TESTE API]: Iniciando teste de comunicação com o Gemini...")
 
 tryCatch({
-  # Chamada direta via namespace para evitar falhas de carregamento de escopo
-  chat <- ellmer::chat_gemini()
+  # Nome atual da função no pacote ellmer
+  chat <- chat_google_gemini()
   
   # Envia mensagem de teste
   resposta <- chat$chat("Responda apenas exatamente: Conexão OK.")
