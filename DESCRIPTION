@@ -12,4 +12,5 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     dplyr,
     lubridate,
+    microdatasus,
     stringr
